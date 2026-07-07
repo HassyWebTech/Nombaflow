@@ -8,39 +8,6 @@ import {
 import TopBar from "../components/common/TopBar";
 import StatCard from "../components/common/StatCard";
 import BillingEngine from "../components/dashboard/BillingEngine";
-import { useEffect, useState } from "react";
-import { api } from ".src/api"; // adjust path if needed
-
-const [stats, setStats] = useState({
-  plans: 0,
-  customers: 0,
-  subscriptions: 0,
-  invoices: 0,
-});
-
-useEffect(() => {
-  const loadDashboard = async () => {
-    try {
-      const [plans, customers, subscriptions, invoices] = await Promise.all([
-        api.get("/v1/plans/"),
-        api.get("/v1/customers/"),
-        api.get("/v1/subscriptions/"),
-        api.get("/v1/invoices/"),
-      ]);
-
-      setStats({
-        plans: plans.data.length,
-        customers: customers.data.length,
-        subscriptions: subscriptions.data.length,
-        invoices: invoices.data.length,
-      });
-    } catch (error) {
-      console.error("Dashboard load failed:", error);
-    }
-  };
-
-  loadDashboard();
-}, []);
 
 export default function Dashboard() {
   return (
