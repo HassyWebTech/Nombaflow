@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* ===========================
+   NombaFlow Design Tokens
+=========================== */
+
+:root {
+  --primary: #5b5ceb;
+  --background: #f6f9fc;
+  --surface: #ffffff;
+
+  --success: #00c389;
+  --warning: #ffb020;
+  --danger: #ff5a5f;
+
+  --text: #081b33;
+  --muted: #64748b;
+  --border: #e5e7eb;
+
+  --radius: 20px;
+
+  --shadow:
+    0 8px 30px rgba(8, 27, 51, 0.08);
+
+  font-family:
+    "Inter",
+    system-ui,
+    sans-serif;
+
+  color: var(--text);
+  background: var(--background);
+}
+
+/* ===========================
+   Base
+=========================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  min-width: 320px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ===========================
+   Typography
+=========================== */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family:
+    "DM Sans",
+    sans-serif;
+
+  margin: 0;
+  color: var(--text);
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+button {
+  cursor: pointer;
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    box-shadow .18s ease;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+/* ===========================
+   Cards
+=========================== */
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ===========================
+   Animations
+=========================== */
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp .45s ease forwards;
+}
+
+@keyframes pulseSuccess {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(0, 195, 137, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 18px rgba(0, 195, 137, .45);
+  }
+}
+
+.pulse-success {
+  animation: pulseSuccess 2s infinite;
+}
+
+@keyframes flow {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(12px);
+  }
+}
+
+.flow {
+  animation: flow 1.2s ease-in-out infinite alternate;
+}
+
+/* ===========================
+   Mobile First
+=========================== */
+
+.container-app {
+  width: 100%;
+  max-width: 430px;
+  margin: auto;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .container-app {
+    max-width: 768px;
+    padding: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-app {
+    max-width: 1400px;
+    padding: 40px;
+  }
+}
